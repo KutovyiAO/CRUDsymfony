@@ -2,9 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Article;
+use AppBundle\Form\ArticleType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -13,9 +16,22 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        return new Response();
+    }
+
+    /**
+     * @Route("/create", name="create")
+     */
+    public function createAction()
+    {
+        $article = new Article();
+
+        $form = $this->createForm(ArticleType::class, $article);
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'form' => $form->createView()
         ]);
+
     }
 }
