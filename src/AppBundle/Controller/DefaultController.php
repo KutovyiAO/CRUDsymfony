@@ -50,6 +50,8 @@ class DefaultController extends Controller
     }
     /**
      * @Route("/update/{id}", name="update")
+     *
+     *
      */
     public function updateAction(Request $request, $id)
     {
@@ -66,7 +68,7 @@ class DefaultController extends Controller
 
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('default/create.html.twig', [
+        return $this->render('default/index.html.twig', [
             'form' => $form->createView()
         ]);
     }
