@@ -56,19 +56,19 @@ class DefaultController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $update = $em->getRepository(Article::class)->find($id);
-        $form = $this->createForm(ArticleType::class, $update);
+        $article = $em->getRepository(Article::class)->find($id);
+        $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($update);
+            $em->persist($article);
             $em->flush();
 
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('default/index.html.twig', [
+        return $this->render('default/create.html.twig', [
             'form' => $form->createView()
         ]);
     }

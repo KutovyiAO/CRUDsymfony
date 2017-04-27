@@ -3,9 +3,9 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Article;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
@@ -18,7 +18,7 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add('name', TextType::class )
+        $builder->add('name',TextType::class) // спросить на сессии
                 ->add('description', TextType::class)
                 ->add('created_at', DateType::class)
                 ->add('Submit', SubmitType::class)
