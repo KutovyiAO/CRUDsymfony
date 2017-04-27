@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   {{ form(form) }}
+   {% for article in articles %}
+    <ul>
+     <li>  {{ article.name  }} </li>
+     <li>  {{ article.description }}</li>
+     {#<li>   {{ article.created_at }}</li> #}
+    </ul>
+      <a href="{{ path('homepage') }}"></a>
+       <a href="{{ path('delete', { 'id': article.id }) }}">delete</a>
+       <a href="{{ path('edit', { 'id': article.id }) }}">edit</a>
+       <a href="{{ path('create') }}">create</a>
+{% endfor %}
 {% endblock %}
 
 

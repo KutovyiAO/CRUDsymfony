@@ -3,8 +3,8 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Article;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Forms; //Это ж можно и не использовать. Для FormFactory используеться
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,11 +18,11 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add('name' )
-                ->add('description')
+        $builder->add('name', TextType::class )
+                ->add('description', TextType::class)
                 ->add('created_at', DateType::class)
-                ->add('submit', SubmitType::class)
-                ->add('reset', ResetType::class); // Why not?
+                ->add('Submit', SubmitType::class)
+                ->add('Reset', ResetType::class);
     }
 
     public function setDefaultOptions(OptionsResolver $resolver)

@@ -16,22 +16,75 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return new Response();
+        $article = $this->getDoctrine()->getRepository(Article::class);
+        $articles = $article->findAll();
+
+
+        return $this->render('default/index.html.twig', [
+            'articles' => $articles
+            ]);
     }
 
     /**
      * @Route("/create", name="create")
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
         $article = new Article();
-
         $form = $this->createForm(ArticleType::class, $article);
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute('homepage');
+        };
+
+        return $this->render('default/create.html.twig', [
             'form' => $form->createView()
         ]);
+
+    }
+    /**
+     * @Route("/update/{id}", name="update")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $update = $em->getRepository(Article::class)->find($id);
+        $form = $this->createForm(ArticleType::class, $update);
+        $form->handleRequest($request);
+
+        if ($form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($update);
+            $em->flush();
+
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render('default/create.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+    /**
+     * @param $id
+     *
+     * @Route("/delete/{id}", name="delete")
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteAction($id)
+    {
+         $em = $this->getDoctrine()->getManager();
+         $delete = $em->getRepository(Article::class)->find($id);
+         $em->remove($delete);
+         $em->flush();
+
+        return $this->redirectToRoute('homepage');
 
     }
 }
