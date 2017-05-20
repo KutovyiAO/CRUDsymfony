@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/article", name="homepage")
      */
     public function indexAction(Request $request)
     {
@@ -22,11 +22,11 @@ class DefaultController extends Controller
 
         return $this->render('default/index.html.twig', [
             'articles' => $articles
-            ]);
+        ]);
     }
 
     /**
-     * @Route("/create", name="create")
+     * @Route("/article/create", name="create")
      */
     public function createAction(Request $request)
     {
@@ -48,10 +48,9 @@ class DefaultController extends Controller
         ]);
 
     }
+
     /**
-     * @Route("/update/{id}", name="update")
-     *
-     *
+     * @Route("/article/update/{id}", name="update")
      */
     public function updateAction(Request $request, $id)
     {
@@ -60,8 +59,7 @@ class DefaultController extends Controller
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
@@ -72,19 +70,20 @@ class DefaultController extends Controller
             'form' => $form->createView()
         ]);
     }
+
     /**
      * @param $id
      *
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/article/delete/{id}", name="delete")
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction($id)
     {
-         $em = $this->getDoctrine()->getManager();
-         $delete = $em->getRepository(Article::class)->find($id);
-         $em->remove($delete);
-         $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $delete = $em->getRepository(Article::class)->find($id);
+        $em->remove($delete);
+        $em->flush();
 
         return $this->redirectToRoute('homepage');
 
