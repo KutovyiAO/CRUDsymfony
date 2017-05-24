@@ -3,19 +3,15 @@
 security:
 
     encoders:
-          Symfony\Component\Security\Core\User\User: plaintext
+          AppBundle\Entity\Users:
+                      algorithm: bcrypt
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-          in_memory:
-                memory:
-                    users:
-                        guest:
-                           password: 123
-                           roles: ROLE_USER
-                        admin:
-                           password: 4045487
-                           roles: ROLE_ADMIN
+          our_db_provider:
+                      entity:
+                          class: AppBundle:Users
+                          property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
