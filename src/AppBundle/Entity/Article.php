@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
 
-
     /**
      * @ORM\Column(name="id", type="integer")
      *

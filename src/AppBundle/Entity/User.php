@@ -6,8 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="app_users")
- * @ORM\Entity(repositoryClass="AppBundle\Entity")
+ * @ORM\Entity
  */
 class User implements UserInterface
 {
@@ -42,7 +41,7 @@ class User implements UserInterface
 
     public function setUsername($username)
     {
-        $this->username = $username;
+        return $this;
     }
 
     public function getUsername()
@@ -57,7 +56,7 @@ class User implements UserInterface
 
     public function setPassword($password)
     {
-        $this->password = $password;
+        return $this;
     }
 
     public function getPassword()
