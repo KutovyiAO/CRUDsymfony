@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   {% for article in articles %}
-    <ul>
-     <li>  {{ article.name  }} </li>
-     <li>  {{ article.description }}</li>
-     <li>   {{ article.createdAt|date("m/d/Y") }}</li>
-    </ul>
-      <a href="{{ path('homepage') }}"></a>
-       <a href="{{ path('delete', { 'id': article.id }) }}">delete</a>
-       <a href="{{ path('update', { 'id': article.id }) }}">edit</a>
-       <a href="{{ path('create') }}">create</a>
-{% endfor %}
+    {% for article in articles %}
+        <ul>
+            <li>  {{ article.name }} </li>
+            <li>  {{ article.description }}</li>
+            <li>   {{ article.createdAt|date("m/d/Y") }}</li>
+        </ul>
+        <a href="{{ path('homepage') }}"></a>
+        <a href="{{ path('delete', { 'id': article.id }) }}">delete</a>
+        <a href="{{ path('update', { 'id': article.id }) }}">edit</a>
+        <a href="{{ path('create') }}">create</a>
+    {% endfor %}
 {% endblock %}
 
 

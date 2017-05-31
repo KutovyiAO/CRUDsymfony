@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Entity
  */
@@ -98,5 +97,4 @@ class Article
     {
         $this->created_at = $created_at;
     }
-
 }

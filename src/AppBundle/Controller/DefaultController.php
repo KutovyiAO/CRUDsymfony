@@ -35,7 +35,6 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
@@ -46,7 +45,6 @@ class DefaultController extends Controller
         return $this->render('default/create.html.twig', [
             'form' => $form->createView()
         ]);
-
     }
 
     /**
@@ -86,6 +84,5 @@ class DefaultController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('homepage');
-
     }
 }

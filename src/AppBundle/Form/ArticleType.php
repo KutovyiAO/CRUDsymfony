@@ -11,18 +11,15 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 class ArticleType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-        $builder->add('name',TextType::class) // спросить на сессии
-                ->add('description', TextType::class)
-                ->add('created_at', DateType::class)
-                ->add('Submit', SubmitType::class)
-                ->add('Reset', ResetType::class);
+        $builder->add('name', TextType::class)// спросить на сессии
+        ->add('description', TextType::class)
+            ->add('created_at', DateType::class)
+            ->add('Submit', SubmitType::class)
+            ->add('Reset', ResetType::class);
     }
 
     public function setDefaultOptions(OptionsResolver $resolver)
@@ -31,6 +28,4 @@ class ArticleType extends AbstractType
             'data_class' => Article::class
         ));
     }
-
 }
-
