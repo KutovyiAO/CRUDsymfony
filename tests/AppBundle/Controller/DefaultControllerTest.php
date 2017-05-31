@@ -1,8 +1,7 @@
 <?php
 
-namespace tests\AppBundle;
+namespace tests\AppBundle\Controller;
 
-use AppBundle\Controller\DefaultController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
@@ -17,6 +16,8 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
         $this->assertContains('create', $crawler->filter('body > a'))->text();
+        $this->assertContains('edit', $crawler->filter('body > a'))->text();
+        $this->assertContains('delete', $crawler->filter('body > a'))->text();
     }
 
     public function testcreateAction()
