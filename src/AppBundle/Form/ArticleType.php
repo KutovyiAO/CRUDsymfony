@@ -16,7 +16,7 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', TextType::class)// спросить на сессии
-        ->add('description', TextType::class)
+            ->add('description', TextType::class)
             ->add('created_at', DateType::class)
             ->add('Submit', SubmitType::class)
             ->add('Reset', ResetType::class);
