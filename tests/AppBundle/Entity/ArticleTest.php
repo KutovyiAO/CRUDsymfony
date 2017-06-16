@@ -9,10 +9,10 @@ class ArticleTest extends TestCase
 {
     public function testId()
     {
-        $idTest = null;
+        $idTest = 111;
         $testArticle = new Article();
         $testArticle->setId($idTest);
-        $this->assertEquals(null, $testArticle->getId());
+        $this->assertEquals(111, $testArticle->getId());
     }
     public function testName()
     {

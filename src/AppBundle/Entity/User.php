@@ -41,7 +41,7 @@ class User implements UserInterface
 
     public function setUsername($username)
     {
-        return $this;
+        return $this->username = $username;
     }
 
     public function getUsername()
@@ -56,7 +56,7 @@ class User implements UserInterface
 
     public function setPassword($password)
     {
-        return $this;
+        return $this->password = $password;
     }
 
     public function getPassword()

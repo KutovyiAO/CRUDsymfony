@@ -7,6 +7,7 @@
  */
 
 namespace tests\AppBundle;
+namespace Tests\AppBundle\Util;
 
 use AppBundle\Entity\User;
 use PHPUnit\Framework\TestCase;
