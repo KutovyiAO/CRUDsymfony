@@ -21,6 +21,7 @@ class UserTest extends TestCase
         $testUserName->setUsername($nameTest);
         $this->assertEquals($nameTest, $testUserName->getUsername());
     }
+
     public function testPassword()
     {
         $passwordTest = '40454';

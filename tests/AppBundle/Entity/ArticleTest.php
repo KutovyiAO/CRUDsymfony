@@ -14,6 +14,7 @@ class ArticleTest extends TestCase
         $testArticle->setId($idTest);
         $this->assertEquals(111, $testArticle->getId());
     }
+
     public function testName()
     {
         $nameTest = 'Test 1';
@@ -21,6 +22,7 @@ class ArticleTest extends TestCase
         $testArticle->setName($nameTest);
         $this->assertEquals($nameTest, $testArticle->getName());
     }
+
     public function testDescription()
     {
         $DescriptionTest = 'Test 1';
@@ -28,6 +30,7 @@ class ArticleTest extends TestCase
         $testArticle->setDescription($DescriptionTest);
         $this->assertEquals($DescriptionTest, $testArticle->getDescription());
     }
+
     public function testCreated()
     {
         $createdTest = new \DateTime('2017-01-01 00:00:00');
